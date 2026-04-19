@@ -1,0 +1,42 @@
+<title>Book Store</title>
+
+<header>Book Store 📚</header>
+
+<a href="/append" class="btn">➕ Add New Book</a>
+
+{% if books %}
+<div class="grid">
+    {% for book in books %}
+    <div class="card">
+        <div class="card-content">
+            <img src="{{ book.image }}" alt="{{ book.name }}">
+            <div class="title-container">
+                <h3>{{ book.name }}</h3>
+            </div>
+            <div class="card-info">
+                <p>ราคา: <strong>{{ book.price }} บาท</strong></p>
+
+                {% if book.category_name %}
+                <p><span class="hashtag">#{{ book.category_name }}</span></p>
+                {% endif %}
+
+                {% if book.description %}
+                <p>{{ book.description }}</p>
+                {% endif %}
+
+                {% if book.stock is not none %}
+                <p>คงเหลือ: {{ book.stock }} เล่ม</p>
+                {% endif %}
+            </div>
+
+            <div class="actions">
+                <a href="/edit/{{ book.id }}">✏️ แก้ไข</a>
+                <a href="/delete/{{ book.id }}">🗑️ ลบ</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="no-cakes">ยังไม่มีหนังสือในระบบ ลองเพิ่มหนังสือใหม่ได้เลย</div>
+{% endif %}

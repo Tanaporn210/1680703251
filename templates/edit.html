@@ -1,0 +1,25 @@
+<title>Edit Book</title>
+
+<h2>✏️ Edit Book</h2>
+
+{% if book.image %}
+<div class="cake-preview">
+    <img src="{{ book.image }}" alt="{{ book.name }}">
+    <h3>{{ book.name }}</h3>
+</div>
+{% endif %}
+
+<label for="name">📖 Book Name</label>
+<input id="name" name="name" value="{{ book.name }}" required>
+
+<label for="price">💰 Price (THB)</label>
+
+<label for="image">🖼️ Cover Image URL</label>
+
+<label for="stock">📦 Stock Quantity</label>
+
+<label for="category_id">🏷️ Category</label>
+
+<button type="submit">✅ Update Book</button>
+
+<a href="/" class="back-link">⬅️ Back to Book List</a>
